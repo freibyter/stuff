@@ -1,0 +1,17 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE checksums (id INTEGER PRIMARY KEY AUTOINCREMENT, checksum CHAR(64), foo TEXT);
+INSERT INTO "checksums" VALUES(5,'1234','Text 1234');
+INSERT INTO "checksums" VALUES(6,'5678','Text 5678');
+INSERT INTO "checksums" VALUES(7,'4711','Text 4711');
+INSERT INTO "checksums" VALUES(8,'0815',NULL);
+CREATE TABLE files (id INTEGER PRIMARY KEY AUTOINCREMENT, file_path VARCHAR(1024), checksum CHAR(64));
+INSERT INTO "files" VALUES(9,'file_1234.txt','1234');
+INSERT INTO "files" VALUES(10,'file_5678.txt','5678');
+INSERT INTO "files" VALUES(11,'copy_of_file_5678.txt','5678');
+INSERT INTO "files" VALUES(12,'file_0815.txt','0815');
+INSERT INTO "files" VALUES(13,'copy_of_file_0815.txt','0815');
+DELETE FROM sqlite_sequence;
+INSERT INTO "sqlite_sequence" VALUES('files',13);
+INSERT INTO "sqlite_sequence" VALUES('checksums',8);
+COMMIT;

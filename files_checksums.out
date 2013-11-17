@@ -1,0 +1,31 @@
+
+--> All Files
+id          file_path      checksum  
+----------  -------------  ----------
+9           file_1234.txt  1234      
+10          file_5678.txt  5678      
+11          copy_of_file_  5678      
+12          file_0815.txt  0815      
+13          copy_of_file_  0815      
+
+--> All Checksums
+id          checksum    foo       
+----------  ----------  ----------
+5           1234        Text 1234 
+6           5678        Text 5678 
+7           4711        Text 4711 
+8           0815                  
+
+--> Get content attribute foo for every file
+id    file_path             foo                 
+----  --------------------  --------------------
+9     file_1234.txt         Text 1234           
+10    file_5678.txt         Text 5678           
+11    copy_of_file_5678.tx  Text 5678           
+12    file_0815.txt                             
+13    copy_of_file_0815.tx                      
+
+--> Get one file per checksum where foo IS NULL
+id    checksum  foo                   id    file_path           
+----  --------  --------------------  ----  --------------------
+8     0815                            12    file_0815.txt       
